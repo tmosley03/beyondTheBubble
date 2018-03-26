@@ -103,7 +103,7 @@ img {
 .storyThumb {
     display: inline-block;
     border: solid 1px white;
-    border-radius: 90px;
+    border-radius: 80px;
     background-color: lightblue;
     padding: 5px;
     margin: 5px;
@@ -123,13 +123,12 @@ img {
 }
 
 .atw-story {
-    width: 150px;
-    height: 75px;
-    font-size: 50%;
+    width: 250px;
+    height: 150px;
 }
 
 .atw-font {
-    font-size: 70%;
+    font-size: 60%;
 }
 
 hr {

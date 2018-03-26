@@ -62,7 +62,7 @@ $(document).ready(function(){
             var storyThumb = $('<div></div>')
             var thumbPicUrl = response.articles[i].urlToImage;
             // console.log(thumbPicUrl);
-            var thumbPic = $('<img></img>').attr('src', thumbPicUrl).attr({ width: "350", height: "100" }).addClass('userImage atw-story');
+            var thumbPic = $('<img></img>').attr('src', thumbPicUrl).attr({ width: "250", height: "175" }).addClass('userImage atw-story');
             var hr = $("<hr>");
             
             var userHeadlineUrl = response.articles[i].title;
