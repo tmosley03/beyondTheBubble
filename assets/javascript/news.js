@@ -38,20 +38,10 @@ var queryUrl = 'https://newsapi.org/v2/everything?q=' + userInput + '&from=2018-
 
 //==== Around the World Colum ===============================================//
 
-// 1. Generate storyThumbs to be displayed in the Around the world col from the userInterest[].
+var userInterest = ["politics", "economy", "cooking", "sports", "technology", "texas", "united states"];  
+var atwThumbs = 'https://newsapi.org/v2/everything?q=' + userInterest[1] + '&from=2018-03-18&' + 'sortBy=popularity&' + 'apiKey=bc18a090e0be4d5699343166c9ba8378';
 
-// 2. "Beyond my bubble" will display current search results (10)
 
-// 3. "Search History" will display past searches currnetly being held in an array
-
-//loop through the userInterest array and create thumbnails to be appended to the around the world col.
-var userInterest = ["politics", "economy", "cooking", "sports", "technology", "texas", "united states"];
-
-    //query the api with userInterests
-    var atwThumbs = 'https://newsapi.org/v2/everything?q=' + userInterest[1] + '&from=2018-03-18&' + 'sortBy=popularity&' + 'apiKey=bc18a090e0be4d5699343166c9ba8378';
-
-    //console.log(atwThumbs);
-//Generate ATW THUMBS
 $(document).ready(function(){
     $.ajax({
         url: atwThumbs,
@@ -63,26 +53,23 @@ $(document).ready(function(){
             //console.log(userInterest[i]);
             //console.log(response.articles[i].url);
             //console.log(response.articles[2].source.name);
-            //create linkt to story
+           
             var storyUrl = response.articles[i].url;
             var source = response.articles[i].source.name;
-            //create link
+            
             var link = $("<a target='_blank'></a>").attr("href", storyUrl).attr('id', userInterest[i]).addClass('storyThumb atw-font');
-            //create div to hold image, and headline
+            
             var storyThumb = $('<div></div>')
-            // create the pic
             var thumbPicUrl = response.articles[i].urlToImage;
             // console.log(thumbPicUrl);
             var thumbPic = $('<img></img>').attr('src', thumbPicUrl).attr({ width: "350", height: "100" }).addClass('userImage atw-story');
             var hr = $("<hr>");
-            // get headline
+            
             var userHeadlineUrl = response.articles[i].title;
             var title = $("<p>").text(userHeadlineUrl).append("<br>", "<hr>", "Source: ", "'", source, "<br>", "Based on your interest in: ", userInterest[i],);
-            // $("#newStory").prepend(title);
             // console.log(userHeadlineUrl);
-            // Stack the photo and the headline
+            
             var picTitle = $(title).prepend(hr).prepend(thumbPic);
-            // $("#newStory").prepend(picTitle);
             var thumbNail = $(link).html(storyThumb).html(picTitle);
             $("#atw-col").prepend(thumbNail);
         }
@@ -102,14 +89,13 @@ $(document).ready(function(){
 $("#searchBtn").on("click", function () {
     if ($("#searchInput").val() === "") { }
     else {
-        // get user search term from field
+        
         userInput = $("#searchInput").val();
-        // add it to url
         queryUrl = 'https://newsapi.org/v2/everything?q=' + userInput + '&from=2018-03-18&' + 'sortBy=popularity&' + 'apiKey=bc18a090e0be4d5699343166c9ba8378';
         // console.log(queryUrl);
         // console.log(userInput);
 
-        // ajax call for user input. 
+         
         $.ajax({
             url: queryUrl,
             method: "GET",
@@ -117,26 +103,24 @@ $("#searchBtn").on("click", function () {
             for (i = 0; i < 15; i++) {
                 //console.log(response.articles[i].url);
                 //console.log(response.articles[2].source.name);
-                //create linkt to story
+                
                 var storyUrl = response.articles[i].url;
                 var source = response.articles[i].source.name;
-                //create link
+               
                 var link = $("<a target='_blank'></a>").attr("href", storyUrl).attr('id', userInput).addClass('storyThumb');
-                //create div to hold image, and headline
+                
                 var storyThumb = $('<div></div>')
-                // create the pic
                 var thumbPicUrl = response.articles[i].urlToImage;
-                // console.log(thumbPicUrl);
+                
                 var thumbPic = $('<img></img>').attr('src', thumbPicUrl).attr({ width: "250", height: "100" }).addClass('userImage');
                 var hr = $("<hr>");
-                // get headline
+                
                 var userHeadlineUrl = response.articles[i].title;
                 var title = $("<p>").text(userHeadlineUrl).append("<br>", "<hr>", "Source: ", "'", source, "<br>", "Your Search Term: ","'", userInput,"'");
-                // $("#newStory").prepend(title);
+                
                 // console.log(userHeadlineUrl);
-                // Stack the photo and the headline
+                
                 var picTitle = $(title).prepend(hr).prepend(thumbPic);
-                // $("#newStory").prepend(picTitle);
                 var thumbNail = $(link).html(storyThumb).html(picTitle);
                 $("#newStory").prepend(thumbNail);
             }
