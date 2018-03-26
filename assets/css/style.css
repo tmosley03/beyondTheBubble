@@ -140,4 +140,7 @@ hr {
     #leftCol {
         visibility: hidden;
     }
+    img {
+        width: 200px;
+    }
 }
