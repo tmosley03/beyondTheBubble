@@ -1,10 +1,12 @@
 //=============== News API =======================================================//
 
-var url = 'https://newsapi.org/v2/everything?' +
-    'q=trump&' +
-    'from=2018-03-18&' +
-    'sortBy=popularity&' +
-    'apiKey=bc18a090e0be4d5699343166c9ba8378';
+var url =
+  "https://newsapi.org/v2/everything?" +
+  "q=trump&" +
+  "from=2018-08-23&" +
+  "sortBy=popularity&" +
+  "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
+    // 'apiKey=bc18a090e0be4d5699343166c9ba8378';
 
 $.ajax({
     url: url,
@@ -34,12 +36,22 @@ firebase.initializeApp(config);
 // Gets values from user form
 
 var userInput = $("#searchInput").val();
-var queryUrl = 'https://newsapi.org/v2/everything?q=' + userInput + '&from=2018-03-18&' + 'sortBy=popularity&' + 'apiKey=bc18a090e0be4d5699343166c9ba8378';
+var queryUrl =
+  "https://newsapi.org/v2/everything?q=" +
+  userInput +
+  "&from=2018-09-01&" +
+  "sortBy=popularity&" +
+  "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
 
 //==== Around the World Colum ===============================================//
 
 var userInterest = ["politics", "economy", "cooking", "sports", "technology", "texas", "united states"];  
-var atwThumbs = 'https://newsapi.org/v2/everything?q=' + userInterest[1] + '&from=2018-03-18&' + 'sortBy=popularity&' + 'apiKey=bc18a090e0be4d5699343166c9ba8378';
+var atwThumbs =
+  "https://newsapi.org/v2/everything?q=" +
+  userInterest[1] +
+  "&from=2018-09-01&" +
+  "sortBy=popularity&" +
+  "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
 
 
 $(document).ready(function(){
@@ -91,7 +103,9 @@ $("#searchBtn").on("click", function () {
     else {
         
         userInput = $("#searchInput").val();
-        queryUrl = 'https://newsapi.org/v2/everything?q=' + userInput + '&from=2018-03-18&' + 'sortBy=popularity&' + 'apiKey=bc18a090e0be4d5699343166c9ba8378';
+        queryUrl = "https://newsapi.org/v2/everything?q=" + userInput + "&from=2018-09-01&" + "sortBy=popularity&" + 
+            //new key
+        "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
         // console.log(queryUrl);
         // console.log(userInput);
 
@@ -100,30 +114,32 @@ $("#searchBtn").on("click", function () {
             url: queryUrl,
             method: "GET",
         }).then(function (response) {
-            for (i = 0; i < 15; i++) {
-                //console.log(response.articles[i].url);
-                //console.log(response.articles[2].source.name);
+            
+                for (i = 0; i < 15; i++) {
+                    //console.log(response.articles[i].url);
+                    //console.log(response.articles[2].source.name);
                 
-                var storyUrl = response.articles[i].url;
-                var source = response.articles[i].source.name;
+                    var storyUrl = response.articles[i].url;
+                    var source = response.articles[i].source.name;
                
-                var link = $("<a target='_blank'></a>").attr("href", storyUrl).attr('id', userInput).addClass('storyThumb');
+                    var link = $("<a target='_blank'></a>").attr("href", storyUrl).attr('id', userInput).addClass('storyThumb');
                 
-                var storyThumb = $('<div></div>')
-                var thumbPicUrl = response.articles[i].urlToImage;
+                    var storyThumb = $('<div></div>')
+                    var thumbPicUrl = response.articles[i].urlToImage;
                 
-                var thumbPic = $('<img></img>').attr('src', thumbPicUrl).attr({ width: "250", height: "100" }).addClass('userImage');
-                var hr = $("<hr>");
+                    var thumbPic = $('<img></img>').attr('src', thumbPicUrl).attr({ width: "250", height: "100" }).addClass('userImage');
+                    var hr = $("<hr>");
                 
-                var userHeadlineUrl = response.articles[i].title;
-                var title = $("<p>").text(userHeadlineUrl).append("<br>", "<hr>", "Source: ", "'", source, "<br>", "Your Search Term: ","'", userInput,"'");
+                    var userHeadlineUrl = response.articles[i].title;
+                    var title = $("<p>").text(userHeadlineUrl).append("<br>", "<hr>", "Source: ", "'", source, "<br>", "Your Search Term: ", "'", userInput, "'");
                 
-                // console.log(userHeadlineUrl);
+                    // console.log(userHeadlineUrl);
                 
-                var picTitle = $(title).prepend(hr).prepend(thumbPic);
-                var thumbNail = $(link).html(storyThumb).html(picTitle);
-                $("#newStory").prepend(thumbNail);
-            }
+                    var picTitle = $(title).prepend(hr).prepend(thumbPic);
+                    var thumbNail = $(link).html(storyThumb).html(picTitle);
+                    $("#newStory").prepend(thumbNail);
+                }
+            
         });
         //====== End of button =============//
         $("#searchInput").val("");
