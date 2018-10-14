@@ -3,7 +3,7 @@
 var url =
   "https://newsapi.org/v2/everything?" +
   "q=trump&" +
-  "from=2018-08-23&" +
+  "from=2018-09-20&" +
   "sortBy=popularity&" +
   "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
     // 'apiKey=bc18a090e0be4d5699343166c9ba8378';
@@ -22,15 +22,15 @@ $.ajax({
 
 //============== Firebase =======================================================//
 
-var config = {
-    apiKey: "AIzaSyCqK8grk7zfqoU9T9bVD3s0RwLO4GT-stk",
-    authDomain: "beyondthebubble-48a3c.firebaseapp.com",
-    databaseURL: "https://beyondthebubble-48a3c.firebaseio.com",
-    projectId: "beyondthebubble-48a3c",
-    storageBucket: "beyondthebubble-48a3c.appspot.com",
-    messagingSenderId: "1068799382212"
-};
-firebase.initializeApp(config);
+// var config = {
+//     apiKey: "AIzaSyCqK8grk7zfqoU9T9bVD3s0RwLO4GT-stk",
+//     authDomain: "beyondthebubble-48a3c.firebaseapp.com",
+//     databaseURL: "https://beyondthebubble-48a3c.firebaseio.com",
+//     projectId: "beyondthebubble-48a3c",
+//     storageBucket: "beyondthebubble-48a3c.appspot.com",
+//     messagingSenderId: "1068799382212"
+// };
+// firebase.initializeApp(config);
 
 //============= Variables ======================================================//
 // Gets values from user form
@@ -49,7 +49,7 @@ var userInterest = ["politics", "economy", "cooking", "sports", "technology", "t
 var atwThumbs =
   "https://newsapi.org/v2/everything?q=" +
   userInterest[1] +
-  "&from=2018-09-01&" +
+  "&from=2018-09-20&" +
   "sortBy=popularity&" +
   "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
 
@@ -103,7 +103,7 @@ $("#searchBtn").on("click", function () {
     else {
         
         userInput = $("#searchInput").val();
-        queryUrl = "https://newsapi.org/v2/everything?q=" + userInput + "&from=2018-09-01&" + "sortBy=popularity&" + 
+        queryUrl = "https://newsapi.org/v2/everything?q=" + userInput + "&from=2018-09-20&" + "sortBy=popularity&" + 
             //new key
         "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
         // console.log(queryUrl);
