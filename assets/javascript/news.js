@@ -104,7 +104,7 @@ $("#searchBtn").on("click", function () {
         
         userInput = $("#searchInput").val();
         queryUrl = "https://newsapi.org/v2/everything?q=" + userInput + "&from=2018-09-20&" + "sortBy=popularity&" + 
-            //new key
+         //new key
         "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
         // console.log(queryUrl);
         // console.log(userInput);
