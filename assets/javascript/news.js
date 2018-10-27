@@ -49,7 +49,7 @@ var userInterest = ["politics", "economy", "cooking", "sports", "technology", "t
 var atwThumbs =
   "https://newsapi.org/v2/everything?q=" +
   userInterest[1] +
-  "&from=2018-09-20&" +
+  "&from=2018-09-30&" +
   "sortBy=popularity&" +
   "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
 
@@ -103,7 +103,7 @@ $("#searchBtn").on("click", function () {
     else {
         
         userInput = $("#searchInput").val();
-        queryUrl = "https://newsapi.org/v2/everything?q=" + userInput + "&from=2018-09-20&" + "sortBy=popularity&" + 
+        queryUrl = "https://newsapi.org/v2/everything?q=" + userInput + "&from=2018-09-30&" + "sortBy=popularity&" + 
          //new key
         "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
         // console.log(queryUrl);
