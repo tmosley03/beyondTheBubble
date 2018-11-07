@@ -8,17 +8,17 @@ var url =
   "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
     // 'apiKey=bc18a090e0be4d5699343166c9ba8378';
 
-$.ajax({
-    url: url,
-    method: "GET",
-}).then(function (response) {
+// $.ajax({
+//     url: url,
+//     method: "GET",
+// }).then(function (response) {
     // console.log(response);
     // var article = response.articles[3].urlToImage;
     // console.log(article);
     // $("#articleSpace").append(article);
     // var newThumb = $("<img>").attr("src", article);
     //$("#articleSpace").append(newThumb);
-});
+// });
 
 //============== Firebase =======================================================//
 
@@ -39,9 +39,10 @@ var userInput = $("#searchInput").val();
 var queryUrl =
   "https://newsapi.org/v2/everything?q=" +
   userInput +
-  "&from=2018-09-01&" +
-  "sortBy=popularity&" +
-  "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
+  "&from=2018-10-20&" +
+    "sortBy=popularity&" +
+    //=== new key update ===//
+  "apiKey=bc18a090e0be4d5699343166c9ba8378";
 
 //==== Around the World Colum ===============================================//
 
@@ -49,9 +50,10 @@ var userInterest = ["politics", "economy", "cooking", "sports", "technology", "t
 var atwThumbs =
   "https://newsapi.org/v2/everything?q=" +
   userInterest[1] +
-  "&from=2018-09-30&" +
-  "sortBy=popularity&" +
-  "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
+  "&from=2018-10-20&" +
+    "sortBy=popularity&" +
+    //== New Key Update ===//
+  "apiKey=bc18a090e0be4d5699343166c9ba8378";
 
 
 $(document).ready(function(){
@@ -103,9 +105,9 @@ $("#searchBtn").on("click", function () {
     else {
         
         userInput = $("#searchInput").val();
-        queryUrl = "https://newsapi.org/v2/everything?q=" + userInput + "&from=2018-09-30&" + "sortBy=popularity&" + 
-         //new key
-        "apiKey=5abbfcf32dc647a5820b696b9c80ebdf";
+        queryUrl = "https://newsapi.org/v2/everything?q=" + userInput + "&from=2018-10-20&" + "sortBy=popularity&" +
+        //=== new key ===/ 
+          "apiKey=bc18a090e0be4d5699343166c9ba8378";
         // console.log(queryUrl);
         // console.log(userInput);
 
